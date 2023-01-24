@@ -39,8 +39,12 @@ public class UserServiceImp implements UserService, UserDetailsService {
 
     @Override
     public User getUserById(Long id) {
-        Optional<User> optionalUser = userRepository.findById(id);
-        return optionalUser.orElse(null);
+        Optional<User> userGetById = userRepository.findById(id);
+        if (userGetById.isPresent()) {
+            return userGetById.get();
+        } else {
+            throw new UsernameNotFoundException(String.format("Пользователь с id '%s' не найден", id));
+        }
     }
 
     @Override

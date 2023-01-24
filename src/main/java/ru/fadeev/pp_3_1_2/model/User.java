@@ -98,15 +98,15 @@ public class User implements UserDetails {
         return roles;
     }
 
-        public void setRoles(String[] roles) {
+    public void setRoles(String[] roles) {
         Set<Role> roleSet = new HashSet<>();
         for (String role : roles) {
             if (role != null) {
                 if (role.equals("ROLE_ADMIN")) {
-                    roleSet.add(new Role(1L,role));
+                    roleSet.add(new Role(1L, role));
                 }
                 if (role.equals("ROLE_USER")) {
-                    roleSet.add(new Role(2L,role));
+                    roleSet.add(new Role(2L, role));
                 }
             }
             this.roles = roleSet;
